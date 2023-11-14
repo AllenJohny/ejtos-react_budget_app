@@ -25,13 +25,28 @@ const Budget = () => {
 				payload: val,
 			})
 			}
-	}
+	};
+
+    const changeCurrency = (val)=>{
+        dispatch({
+            type: 'CHG_CURRENCY',
+            payload: val,
+        })
+        };
+
 	
 	return (
 		<div className='alert alert-secondary'>
-            <span>Budget: {currency}</span>
+            <select className="custom-select" id="inputGroupSelect01" onChange={(event) => changeCurrency(event.target.value)}>
+                <option defaultValue>Currency select</option>
+                <option value="£" name="pound">Pound</option>
+                <option value="$" name="dollar">Dollar</option>
+                <option value="₹" name="rupees">Rupees</option>
+                <option value="€" name="euro">Euro</option>
+                </select>
+                <span> -- Budget: {currency}</span>
 			<input type="number" step="10" value={budget} onInput={(event)=>changeBudget(event.target.value)}></input>
-		</div>
+            </div>
 	);
 };
 
